@@ -1,0 +1,22 @@
+# Core ML and Computer Vision
+inference-sdk>=0.45.1
+opencv-python==4.10.0.84
+numpy>=1.24.0,<2.0.0
+
+# HTTP and API
+requests>=2.32.0
+
+# Audio/Music Control
+spotipy==2.23.0
+
+# System Control and Monitoring
+psutil==5.9.5
+screen-brightness-control==0.21.0
+WMI==1.5.1
+pywin32==306
+
+# Configuration Management
+python-dotenv==1.0.0
+
+# Explicitly avoid problematic packages
+# Note: Do NOT install 'roboflow' package as it conflicts with inference-sdk

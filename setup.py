@@ -38,7 +38,7 @@ SLOUCHING_BRIGHTNESS=20
 # Sleep Mode Settings
 USER_ABSENT_TIMEOUT=30
 """)
-        print("✅ .env file created!")
+        print(".env file created!")
 
 def read_env_file():
     """Read current .env file values"""
@@ -80,7 +80,7 @@ def write_env_file(env_vars):
         f.write(f"USER_ABSENT_TIMEOUT={env_vars.get('USER_ABSENT_TIMEOUT', '30')}\n")
 
 def setup_roboflow(current_vars):
-    print("\n=== 🤖 Roboflow Setup ===")
+    print("\n=== Roboflow Setup ===")
     print("Please provide your Roboflow credentials:")
     print("Get these from: https://roboflow.com/")
     
@@ -124,7 +124,7 @@ def setup_spotify(current_vars):
     }
 
 def setup_detection_settings(current_vars):
-    print("\n=== ⚙️ Detection Settings ===")
+    print("\n=== Detection Settings ===")
     
     current_confidence = current_vars.get('CONFIDENCE_THRESHOLD', '0.5')
     current_interval = current_vars.get('DETECTION_INTERVAL', '1.0')
@@ -147,7 +147,7 @@ def setup_detection_settings(current_vars):
     }
 
 def main():
-    print("🚀 Welcome to Slouching Detector Setup!")
+    print("Welcome to Slouching Detector Setup!")
     print("This script will help you configure the application using environment variables.")
     print("Your settings will be stored securely in a .env file (ignored by git).")
     
@@ -169,33 +169,33 @@ def main():
         # Write to .env file
         write_env_file(all_vars)
         
-        print("\n✅ Setup completed successfully!")
-        print("📁 Configuration saved to .env file")
-        print("🔒 .env file is ignored by git for security")
+        print("\nSetup completed successfully!")
+        print("Configuration saved to .env file")
+        print(".env file is ignored by git for security")
         
-        print("\n📋 Next steps:")
+        print("\nNext steps:")
         print("1. Make sure you have a webcam connected")
         print("2. Ensure Spotify is installed and you're logged in")
         print("3. Run: python gui_app.py")
         
         # Test configuration
-        print("\n🧪 Testing configuration...")
+        print("\nTesting configuration...")
         try:
             import config
             missing = config.validate_config()
             if missing:
-                print(f"⚠️  Missing configuration: {', '.join(missing)}")
+                print(f"Missing configuration: {', '.join(missing)}")
                 print("Please run setup again to complete configuration.")
             else:
-                print("✅ All configuration looks good!")
+                print("All configuration looks good!")
                 config.print_config_status()
         except Exception as e:
-            print(f"⚠️  Error testing configuration: {e}")
+            print(f"Error testing configuration: {e}")
         
     except KeyboardInterrupt:
-        print("\n❌ Setup cancelled.")
+        print("\nSetup cancelled.")
     except Exception as e:
-        print(f"\n❌ Error during setup: {e}")
+        print(f"\nError during setup: {e}")
 
 if __name__ == "__main__":
     main()

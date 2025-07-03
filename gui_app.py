@@ -1,7 +1,4 @@
-"""
-GUI version of the Slouching Detector
-Provides a simple interface to start/stop monitoring
-"""
+#Main GUI file
 
 import os
 import sys

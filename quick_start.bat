@@ -7,7 +7,7 @@ cd /d "%~dp0"
 
 REM Check if virtual environment exists
 if not exist ".venv" (
-    echo ❌ Virtual environment not found!
+    echo  Virtual environment not found!
     echo Please run setup first using start.bat
     pause
     exit /b 1
@@ -15,20 +15,20 @@ if not exist ".venv" (
 
 REM Check if .env file exists
 if not exist ".env" (
-    echo ❌ Configuration file not found!
+    echo  Configuration file not found!
     echo Please run setup first using start.bat
     pause
     exit /b 1
 )
 
-echo ✅ Environment ready - Launching GUI...
+echo  Environment ready - Launching GUI...
 .venv\Scripts\python.exe gui_app.py
 
 if %errorlevel% neq 0 (
-    echo ❌ Application encountered an error
+    echo  Application encountered an error
     echo Check the console output above for details
     pause
     exit /b 1
 )
 
-echo ✅ Application closed successfully
+echo  Application closed successfully

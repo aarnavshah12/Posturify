@@ -47,7 +47,7 @@ class SlouchingDetectorGUI:
         self.root.geometry("700x650") # Adjusted size for better fit
         self.root.resizable(False, False)
         
-        # --- Color Palette (Nord Theme inspired) ---
+        # Color Palette (Nord Theme inspired)
         self.colors = {
             "background": "#2E3440",
             "panel": "#3B4252",
@@ -61,7 +61,7 @@ class SlouchingDetectorGUI:
         
         self.root.configure(bg=self.colors["background"])
 
-        # --- Style Configuration ---
+        # Style Configuration
         s = ttk.Style()
         try:
             sv_ttk.set_theme("dark")
@@ -109,7 +109,7 @@ class SlouchingDetectorGUI:
         TITLE_FONT = ("Segoe UI", 16, "bold")
         BODY_FONT = ("Segoe UI", 10)
 
-        # --- Create a scrollable area ---
+        # Create a scrollable area
         self.main_canvas = tk.Canvas(self.root, bg=self.colors["background"], highlightthickness=0)
         self.scrollbar = ttk.Scrollbar(self.root, orient="vertical", command=self.main_canvas.yview)
         self.main_canvas.configure(yscrollcommand=self.scrollbar.set)
@@ -133,13 +133,13 @@ class SlouchingDetectorGUI:
         title_label = ttk.Label(main_frame, text="Slouching Detector", font=TITLE_FONT, style="TLabel")
         title_label.grid(row=0, column=0, columnspan=2, pady=(0, 20), sticky=tk.W)
         
-        # --- Container for the control panels ---
+        # Container for the control panels
         controls_container = ttk.Frame(main_frame)
         controls_container.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
         controls_container.columnconfigure(0, weight=1)
         controls_container.columnconfigure(1, weight=1)
 
-        # --- Left Panel: Status & Main Controls ---
+        # Left Panel: Status & Main Controls
         left_panel = ttk.Frame(controls_container, style="TFrame")
         left_panel.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S), padx=(0, 10))
         left_panel.columnconfigure(0, weight=1)
@@ -168,7 +168,7 @@ class SlouchingDetectorGUI:
         self.stop_button = ttk.Button(control_frame, text="⏹️ Stop Monitoring", command=self.stop_monitoring, state=tk.DISABLED, style="Stop.TButton")
         self.stop_button.pack(fill=tk.X, pady=2)
 
-        # --- Right Panel: Spotify ---
+        # Right Panel: Spotify
         right_panel = ttk.Frame(controls_container, style="TFrame")
         right_panel.grid(row=0, column=1, sticky=(tk.W, tk.E, tk.N, tk.S))
         right_panel.columnconfigure(0, weight=1)
@@ -198,11 +198,11 @@ class SlouchingDetectorGUI:
         self.current_track_label = ttk.Label(spotify_frame, text="Not connected", font=BODY_FONT, wraplength=180, justify=tk.CENTER, foreground=self.colors["text_secondary"])
         self.current_track_label.pack(fill=tk.X, pady=(5, 0))
 
-        # --- Analysis Frame (initially hidden) ---
+        # Analysis Frame (initially hidden)
         self.analysis_frame = ttk.LabelFrame(main_frame, text="Posture Analysis", padding="10")
         # This frame will be populated with the graph later
 
-        # --- Log frame below controls ---
+        #Log frame below controls
         log_frame = ttk.LabelFrame(main_frame, text="Activity Log", padding="10")
         log_frame.grid(row=2, column=0, columnspan=2, sticky=(tk.W, tk.E, tk.N, tk.S), pady=(10, 0))
         
@@ -607,7 +607,7 @@ class SlouchingDetectorGUI:
         proper_percent = (proper_time / total_time) * 100
         improper_percent = (improper_time / total_time) * 100
 
-        # --- Create Matplotlib Pie Chart ---
+        # Create Matplotlib Pie Chart
         fig, ax = plt.subplots(figsize=(4, 3), dpi=100)
         fig.patch.set_facecolor(self.colors["background"])
         ax.set_facecolor(self.colors["background"])
@@ -628,7 +628,7 @@ class SlouchingDetectorGUI:
         ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
         plt.title("Posture Summary", color=self.colors["foreground"])
 
-        # --- Embed in Tkinter ---
+        # Embed in Tkinter
         self.analysis_frame.grid(row=3, column=0, columnspan=2, sticky=(tk.W, tk.E, tk.N, tk.S), pady=(10, 0))
         
         if self.analysis_canvas:

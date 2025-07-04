@@ -226,7 +226,7 @@ class SpotifyController:
                 else:
                     logger.info("No 'product' field in user info - checking playback capabilities...")
                     
-                    # Test 1: Try to get available devices (Premium feature for remote control)
+                    #Try to get available devices (Premium feature for remote control)
                     try:
                         devices = self.sp.devices()
                         if devices and 'devices' in devices:
@@ -237,7 +237,7 @@ class SpotifyController:
                     except Exception as device_error:
                         logger.debug(f"Device check failed: {device_error}")
                     
-                    # Test 2: Try to get current playback state
+                    # Try to get current playback state
                     try:
                         current = self.sp.current_playback()
                         if current:
@@ -248,7 +248,7 @@ class SpotifyController:
                     except Exception as playback_error:
                         logger.debug(f"Playback check failed: {playback_error}")
                     
-                    # Test 3: Since you said you have Premium and can hear music, assume Premium
+                    # You need Premium to do this
                     logger.info("Cannot determine status from API - Assuming Premium (music control works)")
                     return None  # Unknown status, but assume Premium
             else:
